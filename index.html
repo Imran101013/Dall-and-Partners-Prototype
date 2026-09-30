@@ -340,8 +340,6 @@ input,select,textarea,button{font-family:inherit}
 <input required type="tel" placeholder="Phone number*" style="padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-width:0">
 <select style="grid-column:1/-1;padding:14px;background:#26304a;border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px"><option>Which programme are you interested in?</option><sc-for list="{{ programOptions }}" as="o"><option>{{ o }}</option></sc-for></select>
 <textarea placeholder="Message" style="grid-column:1/-1;padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-height:96px"></textarea>
-<label style="grid-column:1/-1;display:flex;gap:10px;font-size:14px;color:#DDE1EC;line-height:1.5"><input required type="checkbox" style="margin-top:3px">I consent to Dall and Partners processing my personal data in accordance with the <a href="#/legal/privacy" style="color:#FF8A80">Privacy Policy</a>*</label>
-<label style="grid-column:1/-1;display:flex;gap:10px;font-size:14px;color:#DDE1EC"><input type="checkbox">I agree to receive marketing communications by email.</label>
 <button type="submit" style="grid-column:1/-1;background:#D32F2F;color:#fff;border:0;padding:16px;font-weight:700;font-size:16px;cursor:pointer">Send</button></form></sc-if>
 </div>
 <div style="min-height:340px;background:#26304a url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=70') center/cover"></div>
@@ -521,7 +519,7 @@ class Component extends DCLogic {
       values: [['Always updated', 'We stay informed on policy developments, government updates and changing investment thresholds so decisions rest on current data.'], ['Compliance', 'We work with licensed lawyers and regulated partners. Strict KYC routines and due diligence keep every step correct and professional.'], ['Transparency', 'Clear costs, timelines and requirements. You always know what you are entering into and what you are paying for.']].map(v => ({ title: v[0], text: v[1] })),
       offices, footOffices, team, jobs, jobPicked: s.job, jobSent: s.jobSent, jobForm: !s.jobSent, submitJob: submitTo('jobSent'),
       ct: ctOut, reCards, properties: propList, noProps: propList.length === 0, clearRE: () => this.setState({ reC: '' }), reFilterLabel: s.reC ? 'Show all countries ×' : '',
-      faqs, showFaq: isHome || isAbout || isCountry, showForm, formPad: isContact ? '72px' : '80px', formTitle: formCfg[0], formText: formCfg[1],
+      faqs, showFaq: isHome || isAbout, showForm, formPad: isContact ? '72px' : '80px', formTitle: formCfg[0], formText: formCfg[1],
       sent: s.sent, formOpen: !s.sent, submitForm: submitTo('sent'), resetForm: () => this.setState({ sent: false }),
       programOptions: C.map(c => c.name + ' ' + (c.type === 'citizenship' ? 'citizenship' : 'residency')).concat(['Real estate', 'Business formation'])
     };
