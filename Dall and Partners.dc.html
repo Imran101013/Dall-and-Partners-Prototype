@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F8;font-family:'DM Sans',sans-serif;color:#1A2234}
+a{color:#D32F2F;text-decoration:none}a:hover{color:#1A2234}
+*{box-sizing:border-box}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif;color:#1A2234;background:#F4F5F8">
+
+<!-- utility bar -->
+<div style="background:#1A2234;color:#C9CFDD;font-size:13px">
+<div style="max-width:1280px;margin:0 auto;padding:9px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<span>Head office · Lisboa, Portugal &nbsp;|&nbsp; Offices in 8 cities</span>
+<span style="display:flex;gap:20px"><a href="tel:+351910201329" style="color:#C9CFDD">+351 910 201 329</a><a href="mailto:contact@dallandpartners.com" style="color:#C9CFDD">contact@dallandpartners.com</a></span>
+</div></div>
+
+<!-- header -->
+<header style="position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #E1E4EC">
+<div style="max-width:1280px;margin:0 auto;padding:0 32px;height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+<a href="#/" style="display:flex;align-items:center;gap:12px;color:#1A2234">
+<span style="width:44px;height:44px;border:2px dashed #9AA3B8;display:grid;place-items:center;font-size:10px;font-weight:700;color:#6B7590;letter-spacing:.08em">LOGO</span>
+<span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;line-height:1">DALL<br><span style="font-size:11px;font-weight:500;letter-spacing:.16em;color:#D32F2F">AND PARTNERS</span></span></a>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<nav style="display:flex;align-items:center;gap:4px">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+<div style="position:relative" onMouseEnter="{{ n.open }}" onMouseLeave="{{ closeMenu }}">
+<a href="{{ n.href }}" style="display:flex;align-items:center;gap:6px;padding:10px 14px;font-size:15px;font-weight:600;color:{{ n.color }};border-bottom:2px solid {{ n.border }}">{{ n.label }}<sc-if value="{{ n.hasKids }}"><span style="font-size:10px">▾</span></sc-if></a>
+<sc-if value="{{ n.showKids }}">
+<div style="position:absolute;top:100%;left:0;min-width:230px;background:#fff;border:1px solid #E1E4EC;box-shadow:0 18px 40px rgba(26,34,52,.14);padding:8px;display:flex;flex-direction:column">
+<sc-for list="{{ n.kids }}" as="k" hint-placeholder-count="4">
+<a href="{{ k.href }}" style="padding:10px 12px;font-size:14px;font-weight:500;color:#1A2234" style-hover="background:#F4F5F8;color:#D32F2F">{{ k.label }}</a>
+</sc-for></div></sc-if>
+</div></sc-for>
+</nav>
+<button onClick="{{ openModal }}" style="background:#D32F2F;color:#fff;border:0;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.02em" style-hover="background:#1A2234">Request call back</button>
+</sc-if>
+<sc-if value="{{ narrow }}"><button onClick="{{ toggleMobile }}" style="background:#1A2234;color:#fff;border:0;width:44px;height:44px;font-size:20px;cursor:pointer">{{ mobileIcon }}</button></sc-if>
+</div>
+<sc-if value="{{ mobileOpen }}">
+<div style="background:#fff;border-top:1px solid #E1E4EC;padding:12px 32px 24px;display:flex;flex-direction:column;gap:2px;max-height:75vh;overflow:auto">
+<sc-for list="{{ mobileNav }}" as="m" hint-placeholder-count="12">
+<a href="{{ m.href }}" style="padding:11px 0 11px {{ m.indent }};font-size:{{ m.size }};font-weight:{{ m.weight }};color:#1A2234;border-bottom:1px solid #EEF0F5">{{ m.label }}</a>
+</sc-for>
+<button onClick="{{ openModal }}" style="margin-top:14px;background:#D32F2F;color:#fff;border:0;padding:14px;font-size:15px;font-weight:700;cursor:pointer">Request call back</button>
+</div></sc-if>
+</header>
+
+<main style="flex:1">
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{ isHome }}">
+<section style="background:#1A2234;color:#fff;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:#1A2234 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=70') center/cover;opacity:.28"></div>
+<div style="position:relative;max-width:1280px;margin:0 auto;padding:110px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:end">
+<div>
+<div style="display:inline-block;background:#D32F2F;padding:6px 12px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Citizenship &amp; residency advisory</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(42px,6vw,80px);line-height:1;margin:24px 0 22px;font-weight:700;letter-spacing:-.02em">Your next passport is a decision, not a dream.</h1>
+<p style="font-size:19px;line-height:1.6;color:#C9CFDD;max-width:560px;margin:0 0 34px">We structure citizenship and residency by investment for investors, families and entrepreneurs, from first consultation to final approval.</p>
+<div style="display:flex;gap:14px;flex-wrap:wrap">
+<a href="#/citizenship" style="background:#D32F2F;color:#fff;padding:16px 28px;font-weight:700;font-size:15px" style-hover="background:#fff;color:#1A2234">Explore all countries</a>
+<a href="#/contact" style="border:1.5px solid #fff;color:#fff;padding:15px 28px;font-weight:700;font-size:15px" style-hover="background:#fff;color:#1A2234">Get consultation</a>
+</div></div>
+<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);padding:28px">
+<div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9AA3B8;margin-bottom:16px">We work with</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<sc-for list="{{ audiences }}" as="a" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="width:8px;height:8px;background:#D32F2F;flex:none"></span>{{ a }}</div>
+</sc-for></div></div>
+</div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:88px 32px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:center">
+<div>
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#D32F2F;text-transform:uppercase">Who we are</div>
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.6vw,46px);line-height:1.1;margin:14px 0 20px;letter-spacing:-.01em">A boutique consulting firm for global mobility.</h2>
+<p style="font-size:17px;line-height:1.7;color:#4A5468;margin:0 0 28px">Dall and Partners provides citizenship and residency by investment solutions to private clients around the world. Our team takes the time to understand each client's situation, then identifies the most suitable programme and delivers it with care.</p>
+<a href="#/about" style="display:inline-block;background:#1A2234;color:#fff;padding:14px 26px;font-weight:700;font-size:15px" style-hover="background:#D32F2F;color:#fff">About us →</a>
+</div>
+<div style="aspect-ratio:4/3;background:#26304a url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=70') center/cover"></div>
+</section>
+
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.6vw,46px);margin:0 0 8px;letter-spacing:-.01em">How we work with you</h2>
+<p style="color:#4A5468;font-size:17px;margin:0 0 40px">Five steps to residency or citizenship, supported by our experts.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-top:3px solid #1A2234">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+<div style="padding:26px 24px 10px 0">
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-size:56px;font-weight:700;color:#D32F2F;line-height:1">{{ s.n }}</div>
+<div style="font-weight:700;font-size:18px;margin:14px 0 8px">{{ s.title }}</div>
+<div style="font-size:15px;line-height:1.6;color:#4A5468">{{ s.text }}</div>
+</div></sc-for></div>
+<div style="margin-top:34px"><a href="#/contact" style="display:inline-block;background:#D32F2F;color:#fff;padding:14px 26px;font-weight:700;font-size:15px" style-hover="background:#1A2234;color:#fff">Book consultation</a></div>
+</section>
+</sc-if>
+
+<!-- ============ PROGRAMS (home + hubs) ============ -->
+<sc-if value="{{ showPrograms }}">
+<sc-if value="{{ isHub }}"><section style="background:#1A2234;color:#fff"><div style="max-width:1280px;margin:0 auto;padding:80px 32px 72px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF8A80;text-transform:uppercase">{{ hubKicker }}</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5vw,64px);margin:14px 0 18px;letter-spacing:-.02em;line-height:1.05">{{ hubTitle }}</h1>
+<p style="font-size:18px;line-height:1.65;color:#C9CFDD;max-width:720px;margin:0">{{ hubText }}</p></div></section></sc-if>
+<section style="max-width:1280px;margin:0 auto;padding:{{ progPad }} 32px 24px">
+<sc-if value="{{ isHome }}"><div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px">
+<div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.6vw,46px);margin:0 0 8px;letter-spacing:-.01em">Citizenship &amp; residency programmes</h2>
+<p style="color:#4A5468;font-size:17px;margin:0">Select the programme that suits your needs.</p></div>
+<div style="display:flex;border:1.5px solid #1A2234">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.pick }}" style="border:0;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button></sc-for>
+</div></div></sc-if>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px">
+<sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+<a href="{{ c.href }}" style="display:block;background:#fff;color:#1A2234;border:1px solid #E1E4EC;position:relative" style-hover="border-color:#D32F2F;box-shadow:0 20px 40px rgba(26,34,52,.12)">
+<div style="height:170px;background:#26304a url('{{ c.img }}') center/cover;position:relative"><span style="position:absolute;left:0;bottom:0;background:#D32F2F;color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px">{{ c.type }}</span></div>
+<div style="padding:24px">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><span style="width:38px;height:26px;background:{{ c.color }};color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700">{{ c.code }}</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700">{{ c.name }}</span></div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14px;color:#4A5468">
+<span>Investment</span><b style="color:#1A2234">{{ c.invest }}</b>
+<span>Time required</span><b style="color:#1A2234">{{ c.time }}</b>
+<span>Visa-free</span><b style="color:#1A2234">{{ c.visa }}</b>
+<span>Best for</span><b style="color:#1A2234">{{ c.best }}</b></div>
+<div style="margin-top:20px;font-weight:700;font-size:14px;color:#D32F2F">Discover →</div>
+</div></a></sc-for></div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isHome }}">
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.6vw,46px);margin:0 0 32px;letter-spacing:-.01em">Other services</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#D3D8E3;border:1px solid #D3D8E3">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+<a href="{{ s.href }}" style="background:#fff;padding:30px;color:#1A2234;display:flex;flex-direction:column;gap:12px" style-hover="background:#1A2234;color:#fff">
+<span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700">{{ s.title }}</span>
+<span style="font-size:15px;line-height:1.6;opacity:.8">{{ s.text }}</span>
+<span style="font-size:13px;font-weight:600;opacity:.7">Available in: {{ s.where }}</span>
+</a></sc-for></div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(30px,3.6vw,46px);margin:0 0 32px;letter-spacing:-.01em">News and updates</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+<sc-for list="{{ news }}" as="a" hint-placeholder-count="5">
+<a href="{{ a.href }}" style="color:#1A2234;display:block" style-hover="color:#D32F2F">
+<div style="aspect-ratio:16/10;background:#26304a url('{{ a.img }}') center/cover"></div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D32F2F;margin:14px 0 6px">{{ a.tag }}</div>
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:600;line-height:1.25">{{ a.title }}</div>
+</a></sc-for></div></section>
+</sc-if>
+
+<!-- ============ ABOUT ============ -->
+<sc-if value="{{ isAbout }}">
+<section style="background:#1A2234;color:#fff"><div style="max-width:1280px;margin:0 auto;padding:88px 32px 72px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF8A80;text-transform:uppercase">Our company</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5vw,66px);margin:14px 0 20px;letter-spacing:-.02em;line-height:1.05;max-width:900px">Clarity, transparency and confidence in global mobility.</h1>
+<p style="font-size:19px;line-height:1.65;color:#C9CFDD;max-width:760px;margin:0">Dall and Partners is a boutique consulting firm providing citizenship and residency by investment solutions to private clients around the world.</p></div></section>
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:center">
+<div style="aspect-ratio:4/3;background:#26304a url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=70') center/cover"></div>
+<div><div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#D32F2F;text-transform:uppercase">Our story</div>
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);line-height:1.12;margin:14px 0 18px">Helping individuals and families navigate global mobility.</h2>
+<p style="font-size:17px;line-height:1.7;color:#4A5468;margin:0 0 16px">Dall and Partners was launched in 2023 by well-established immigration consultants and lawyers with long-standing backgrounds in the industry.</p>
+<p style="font-size:17px;line-height:1.7;color:#4A5468;margin:0">We bring more than 20 years of combined knowledge, field insight and proven results into one unified platform, with a personal approach focused on quality and trusted guidance.</p>
+<div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap"><a href="#/team" style="background:#1A2234;color:#fff;padding:14px 24px;font-weight:700;font-size:15px" style-hover="background:#D32F2F;color:#fff">Meet the team</a><a href="#/join" style="border:1.5px solid #1A2234;color:#1A2234;padding:13px 24px;font-weight:700;font-size:15px" style-hover="background:#1A2234;color:#fff">Join our team</a></div></div>
+</section>
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#D32F2F;text-transform:uppercase">Why choose us</div>
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:14px 0 32px">Choose Dall and Partners as your relocation partner</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+<sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+<div style="background:#fff;border-top:4px solid #D32F2F;padding:32px"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;margin:0 0 12px">{{ v.title }}</h3><p style="margin:0;font-size:16px;line-height:1.7;color:#4A5468">{{ v.text }}</p></div></sc-for></div></section>
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0 0 8px">Our offices</h2>
+<p style="color:#4A5468;font-size:17px;margin:0 0 30px">Head office in Portugal and a global presence.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 24px">
+<sc-for list="{{ offices }}" as="o" hint-placeholder-count="8">
+<div style="border-top:2px solid #1A2234;padding-top:16px"><div style="font-weight:700;font-size:18px;margin-bottom:10px">{{ o.city }}</div><div style="font-size:15px;line-height:1.7;color:#4A5468">{{ o.phone }}<br>contact@dallandpartners.com<br>{{ o.addr }}</div></div></sc-for></div></section>
+</sc-if>
+
+<!-- ============ TEAM ============ -->
+<sc-if value="{{ isTeam }}">
+<section style="background:#1A2234;color:#fff"><div style="max-width:1280px;margin:0 auto;padding:88px 32px 72px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF8A80;text-transform:uppercase">Our company</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5vw,66px);margin:14px 0 20px;letter-spacing:-.02em;line-height:1.05">Our team</h1>
+<p style="font-size:19px;line-height:1.65;color:#C9CFDD;max-width:720px;margin:0">Immigration consultants, lawyers and advisors who have spent their careers helping families relocate with confidence.</p></div></section>
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 24px">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px">
+<sc-for list="{{ team }}" as="p" hint-placeholder-count="8">
+<div style="background:#fff"><div style="aspect-ratio:1/1.05;background:#26304a url('{{ p.img }}') center top/cover"></div>
+<div style="padding:20px 22px 24px"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700">{{ p.name }}</div><div style="color:#D32F2F;font-weight:600;font-size:14px;margin:4px 0 10px">{{ p.role }}</div><div style="font-size:14px;color:#4A5468;line-height:1.6">{{ p.bio }}</div></div></div></sc-for></div>
+<div style="margin-top:48px;background:#1A2234;color:#fff;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700">Want to work with us?</div><div style="color:#C9CFDD;margin-top:6px">See our open positions.</div></div><a href="#/join" style="background:#D32F2F;color:#fff;padding:15px 28px;font-weight:700" style-hover="background:#fff;color:#1A2234">Join our team →</a></div>
+</section></sc-if>
+
+<!-- ============ JOIN ============ -->
+<sc-if value="{{ isJoin }}">
+<section style="background:#1A2234;color:#fff"><div style="max-width:1280px;margin:0 auto;padding:88px 32px 72px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF8A80;text-transform:uppercase">Careers</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5vw,66px);margin:14px 0 20px;letter-spacing:-.02em;line-height:1.05">Join our team</h1>
+<p style="font-size:19px;line-height:1.65;color:#C9CFDD;max-width:720px;margin:0">Help clients move their lives across borders. We hire people who value precision, honesty and service.</p></div></section>
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:start">
+<div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:32px;margin:0 0 24px">Open positions</h2>
+<div style="display:flex;flex-direction:column;gap:14px">
+<sc-for list="{{ jobs }}" as="j" hint-placeholder-count="4">
+<div style="background:#fff;border:1px solid #E1E4EC;padding:24px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap">
+<div><div style="font-weight:700;font-size:19px">{{ j.title }}</div><div style="color:#4A5468;font-size:14px;margin-top:4px">{{ j.meta }}</div></div>
+<button onClick="{{ j.pick }}" style="background:{{ j.bg }};color:{{ j.fg }};border:1.5px solid #1A2234;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer">{{ j.btn }}</button></div></sc-for></div></div>
+<div style="background:#fff;border:1px solid #E1E4EC;padding:32px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;margin:0 0 6px">Apply now</h2>
+<p style="color:#4A5468;margin:0 0 22px;font-size:15px">Applying for: <b style="color:#D32F2F">{{ jobPicked }}</b></p>
+<sc-if value="{{ jobSent }}"><div style="background:#E8F5E9;color:#1B5E20;padding:18px;font-weight:600">Thank you. Your application has been received.</div></sc-if>
+<sc-if value="{{ jobForm }}"><form onSubmit="{{ submitJob }}" style="display:flex;flex-direction:column;gap:12px">
+<input required placeholder="Full name*" style="padding:14px;border:1px solid #C6CCDA;font-size:15px">
+<input required type="email" placeholder="Email*" style="padding:14px;border:1px solid #C6CCDA;font-size:15px">
+<input placeholder="LinkedIn or portfolio URL" style="padding:14px;border:1px solid #C6CCDA;font-size:15px">
+<textarea placeholder="Tell us about yourself" style="padding:14px;border:1px solid #C6CCDA;font-size:15px;min-height:110px"></textarea>
+<button type="submit" style="background:#D32F2F;color:#fff;border:0;padding:15px;font-weight:700;font-size:15px;cursor:pointer">Submit application</button></form></sc-if></div>
+</section></sc-if>
+
+<!-- ============ COUNTRY PAGE ============ -->
+<sc-if value="{{ isCountry }}">
+<section style="background:#1A2234;color:#fff;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:#1A2234 url('{{ ct.img }}') center/cover;opacity:.35"></div>
+<div style="position:relative;max-width:1280px;margin:0 auto;padding:64px 32px 0">
+<div style="font-size:14px;color:#C9CFDD"><a href="#/" style="color:#C9CFDD">Home</a> / <a href="{{ ct.hubHref }}" style="color:#C9CFDD">{{ ct.typeLabel }}</a> / {{ ct.name }}</div>
+<div style="display:flex;align-items:center;gap:14px;margin:26px 0 14px"><span style="width:46px;height:32px;background:{{ ct.color }};display:grid;place-items:center;font-size:12px;font-weight:700">{{ ct.code }}</span><span style="background:#D32F2F;padding:5px 12px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">{{ ct.status }}</span></div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5.4vw,72px);margin:0 0 20px;letter-spacing:-.02em;line-height:1.02;max-width:900px">{{ ct.title }}</h1>
+<p style="font-size:19px;line-height:1.65;color:#DDE1EC;max-width:720px;margin:0 0 30px">{{ ct.lead }}</p>
+<a href="#/contact" style="display:inline-block;background:#D32F2F;color:#fff;padding:15px 28px;font-weight:700" style-hover="background:#fff;color:#1A2234">Book a consultation</a>
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));background:#fff;color:#1A2234">
+<div style="padding:22px 26px;border-right:1px solid #E1E4EC"><div style="font-size:13px;color:#6B7590">Minimum investment</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-top:4px">{{ ct.invest }}</div></div>
+<div style="padding:22px 26px;border-right:1px solid #E1E4EC"><div style="font-size:13px;color:#6B7590">Time required</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-top:4px">{{ ct.time }}</div></div>
+<div style="padding:22px 26px"><div style="font-size:13px;color:#6B7590">Visa-free access</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-top:4px">{{ ct.visa }}</div></div>
+</div></div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:64px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+<sc-for list="{{ ct.perks }}" as="p" hint-placeholder-count="4"><div style="display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #E1E4EC;padding:18px 20px;font-weight:600;font-size:15px"><span style="width:22px;height:22px;background:#D32F2F;color:#fff;display:grid;place-items:center;font-size:12px;flex:none">✓</span>{{ p }}</div></sc-for></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:start">
+<div style="aspect-ratio:4/5;background:#26304a url('{{ ct.img2 }}') center/cover"></div>
+<div><div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#D32F2F;text-transform:uppercase">The process</div>
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:12px 0 26px;line-height:1.1">{{ ct.processTitle }}</h2>
+<div style="display:flex;flex-direction:column;gap:22px">
+<sc-for list="{{ ct.process }}" as="s" hint-placeholder-count="5"><div style="display:flex;gap:18px"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:34px;font-weight:700;color:#D32F2F;line-height:1;width:40px;flex:none">{{ s.n }}</div><div><div style="font-weight:700;font-size:18px;margin-bottom:6px">{{ s.title }}</div><div style="font-size:15.5px;line-height:1.65;color:#4A5468">{{ s.text }}</div></div></div></sc-for></div></div>
+</section>
+
+<section style="background:#1A2234;color:#fff;margin-top:80px"><div style="max-width:1280px;margin:0 auto;padding:72px 32px">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0 0 32px">Find the investment path that suits you best</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px">
+<sc-for list="{{ ct.paths }}" as="p" hint-placeholder-count="4">
+<div style="background:#fff;color:#1A2234;padding:32px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#D32F2F;text-transform:uppercase">Investment option</div>
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin:8px 0 4px">{{ p.title }}</div>
+<div style="font-size:30px;font-weight:700;color:#D32F2F;margin-bottom:18px">{{ p.amt }}</div>
+<ul style="margin:0 0 22px;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ p.pts }}" as="pt" hint-placeholder-count="4"><li style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4A5468"><span style="color:#D32F2F;font-weight:700">—</span>{{ pt }}</li></sc-for></ul>
+<a href="#/contact" style="font-weight:700;font-size:14px">Ask about this option →</a></div></sc-for></div></div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;background:#fff;border:1px solid #E1E4EC">
+<div style="padding:44px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,38px);margin:0 0 24px;line-height:1.1">Why we recommend {{ ct.name }}</h2>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ ct.why }}" as="w" hint-placeholder-count="5"><div style="background:#1A2234;color:#fff;padding:15px 18px;font-weight:500;font-size:15px;display:flex;gap:12px"><span style="color:#FF8A80">✓</span>{{ w }}</div></sc-for></div></div>
+<div style="min-height:340px;background:#26304a url('{{ ct.img3 }}') center/cover"></div>
+</section>
+
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+<div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,38px);margin:0 0 6px">Properties for {{ ct.typeLower }} programmes</h2><p style="margin:0;color:#4A5468">Browse qualifying real estate in {{ ct.name }} and nearby markets.</p></div>
+<a href="#/real-estate" style="background:#D32F2F;color:#fff;padding:15px 28px;font-weight:700" style-hover="background:#1A2234;color:#fff">View properties →</a></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 0">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,38px);margin:0 0 24px">{{ ct.name }} vs other {{ ct.typeLower }} programmes</h2>
+<div style="overflow-x:auto;background:#fff;border:1px solid #E1E4EC"><table style="width:100%;border-collapse:collapse;font-size:15px;min-width:560px">
+<thead><tr style="background:#1A2234;color:#fff;text-align:left"><th style="padding:16px 20px">Programme</th><th style="padding:16px 20px">Investment</th><th style="padding:16px 20px">Time</th><th style="padding:16px 20px">Visa-free</th></tr></thead>
+<tbody><sc-for list="{{ ct.compare }}" as="r" hint-placeholder-count="4"><tr style="background:{{ r.bg }}"><td style="padding:16px 20px;font-weight:700"><a href="{{ r.href }}" style="color:#1A2234">{{ r.name }}</a></td><td style="padding:16px 20px">{{ r.invest }}</td><td style="padding:16px 20px">{{ r.time }}</td><td style="padding:16px 20px">{{ r.visa }}</td></tr></sc-for></tbody></table></div></section>
+
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 0">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3vw,38px);margin:0 0 24px">Read more about {{ ct.name }}</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px">
+<sc-for list="{{ newsShort }}" as="a" hint-placeholder-count="3"><a href="{{ a.href }}" style="color:#1A2234;display:block" style-hover="color:#D32F2F"><div style="aspect-ratio:16/10;background:#26304a url('{{ a.img }}') center/cover"></div><div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D32F2F;margin:12px 0 6px">{{ a.tag }}</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600;line-height:1.25">{{ a.title }}</div></a></sc-for></div></section>
+</sc-if>
+
+<!-- ============ REAL ESTATE ============ -->
+<sc-if value="{{ isRE }}">
+<section style="background:#1A2234;color:#fff"><div style="max-width:1280px;margin:0 auto;padding:88px 32px 72px">
+<div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF8A80;text-transform:uppercase">Real estate</div>
+<h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,5vw,66px);margin:14px 0 20px;letter-spacing:-.02em;line-height:1.05">International real estate</h1>
+<p style="font-size:19px;line-height:1.65;color:#C9CFDD;max-width:760px;margin:0">Buying property abroad can feel overwhelming. We offer honest advice, guidance through the market and clear answers at every step.</p></div></section>
+<section style="max-width:1280px;margin:0 auto;padding:64px 32px 0">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+<sc-for list="{{ reCards }}" as="c" hint-placeholder-count="4">
+<div style="background:#fff;border:1px solid {{ c.border }};padding:26px;border-top:4px solid {{ c.top }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><span style="width:38px;height:26px;background:{{ c.color }};color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700">{{ c.code }}</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:23px;font-weight:700">{{ c.name }}</span></div>
+<div style="font-size:14.5px;line-height:1.8;color:#4A5468"><b style="color:#1A2234">Status:</b> {{ c.status }}<br><b style="color:#1A2234">Obtaining time:</b> {{ c.time }}</div>
+<div style="background:#F4F5F8;padding:11px;text-align:center;font-weight:600;font-size:14px;margin:16px 0 10px">{{ c.from }}</div>
+<button onClick="{{ c.pick }}" style="width:100%;background:{{ c.bg }};color:{{ c.fg }};border:1.5px solid #1A2234;padding:12px;font-weight:700;font-size:14px;cursor:pointer">{{ c.btn }}</button></div></sc-for></div>
+</section>
+<section style="max-width:1280px;margin:0 auto;padding:72px 32px 0">
+<div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0">Featured properties in our catalogue</h2>
+<button onClick="{{ clearRE }}" style="background:transparent;border:0;color:#D32F2F;font-weight:700;font-size:14px;cursor:pointer">{{ reFilterLabel }}</button></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+<sc-for list="{{ properties }}" as="p" hint-placeholder-count="6">
+<div style="background:#fff;border:1px solid #E1E4EC"><div style="aspect-ratio:4/3;background:#26304a url('{{ p.img }}') center/cover"></div>
+<div style="padding:20px 22px 24px"><div style="font-size:13px;color:#6B7590;margin-bottom:6px">{{ p.loc }}</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px">{{ p.title }}</div><div style="font-size:14px;color:#4A5468;margin-bottom:12px">{{ p.spec }}</div><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:20px;color:#D32F2F">{{ p.price }}</b><a href="#/contact" style="font-weight:700;font-size:14px">View details →</a></div></div></div></sc-for></div>
+<sc-if value="{{ noProps }}"><div style="padding:40px;background:#fff;text-align:center;color:#4A5468">No listings yet for this country. <a href="#/contact">Ask our team</a>.</div></sc-if>
+</section></sc-if>
+
+<!-- ============ LEGAL ============ -->
+<sc-if value="{{ isLegal }}">
+<section style="max-width:860px;margin:0 auto;padding:80px 32px 24px"><h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,4.6vw,56px);margin:0 0 24px;letter-spacing:-.02em">{{ legalTitle }}</h1>
+<p style="font-size:17px;line-height:1.8;color:#4A5468">This is placeholder text for the {{ legalTitle }} page. Replace it with your approved legal copy before launch.</p>
+<p style="font-size:17px;line-height:1.8;color:#4A5468">Dall and Partners, a part of AimPerfect Services Com Auto LDA, registered in Portugal. Questions? <a href="#/contact">Contact us</a>.</p></section></sc-if>
+
+<!-- ============ FAQ (home, about, country) ============ -->
+<sc-if value="{{ showFaq }}">
+<section style="max-width:1280px;margin:0 auto;padding:80px 32px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:start">
+<div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0 0 8px">Frequently asked questions</h2><p style="color:#4A5468;font-size:16px;margin:0 0 22px">Answers to the questions we hear most.</p>
+<div style="border-top:1px solid #C6CCDA">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+<div style="border-bottom:1px solid #C6CCDA"><button onClick="{{ f.toggle }}" style="width:100%;background:none;border:0;padding:20px 0;display:flex;justify-content:space-between;gap:16px;text-align:left;font-size:17px;font-weight:600;color:#1A2234;cursor:pointer">{{ f.q }}<span style="color:#D32F2F;font-size:22px;line-height:1">{{ f.sign }}</span></button>
+<sc-if value="{{ f.open }}"><div style="padding:0 0 20px;font-size:15.5px;line-height:1.7;color:#4A5468">{{ f.a }}</div></sc-if></div></sc-for></div></div>
+<div style="background:#1A2234;color:#fff;padding:40px"><div style="font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;line-height:1.15">Didn't find what you are looking for?</div><p style="color:#C9CFDD;margin:14px 0 26px">Schedule a personalised meeting with our experts.</p><a href="#/contact" style="display:inline-block;background:#D32F2F;color:#fff;padding:14px 26px;font-weight:700" style-hover="background:#fff;color:#1A2234">Schedule meeting</a></div>
+</section></sc-if>
+
+<!-- ============ CONTACT FORM (all pages except join/legal) ============ -->
+<sc-if value="{{ showForm }}">
+<section style="max-width:1280px;margin:0 auto;padding:{{ formPad }} 32px 88px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));background:#1A2234;color:#fff">
+<div style="padding:clamp(28px,4vw,56px)">
+<h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0 0 10px">{{ formTitle }}</h2>
+<p style="color:#C9CFDD;margin:0 0 26px;font-size:16px;line-height:1.6">{{ formText }}</p>
+<sc-if value="{{ sent }}"><div style="background:#fff;color:#1A2234;padding:24px;font-weight:600;line-height:1.6">Thank you. Your message has been sent and one of our advisors will contact you shortly.<br><button onClick="{{ resetForm }}" style="margin-top:14px;background:#D32F2F;color:#fff;border:0;padding:10px 18px;font-weight:700;cursor:pointer">Send another</button></div></sc-if>
+<sc-if value="{{ formOpen }}">
+<form onSubmit="{{ submitForm }}" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<input required placeholder="First name*" style="padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-width:0">
+<input required placeholder="Last name*" style="padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-width:0">
+<input required type="email" placeholder="Email*" style="padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-width:0">
+<input required type="tel" placeholder="Phone number*" style="padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-width:0">
+<select style="grid-column:1/-1;padding:14px;background:#26304a;border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px"><option>Which programme are you interested in?</option><sc-for list="{{ programOptions }}" as="o"><option>{{ o }}</option></sc-for></select>
+<textarea placeholder="Message" style="grid-column:1/-1;padding:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:15px;min-height:96px"></textarea>
+<label style="grid-column:1/-1;display:flex;gap:10px;font-size:14px;color:#DDE1EC;line-height:1.5"><input required type="checkbox" style="margin-top:3px">I consent to Dall and Partners processing my personal data in accordance with the <a href="#/legal/privacy" style="color:#FF8A80">Privacy Policy</a>*</label>
+<label style="grid-column:1/-1;display:flex;gap:10px;font-size:14px;color:#DDE1EC"><input type="checkbox">I agree to receive marketing communications by email.</label>
+<button type="submit" style="grid-column:1/-1;background:#D32F2F;color:#fff;border:0;padding:16px;font-weight:700;font-size:16px;cursor:pointer">Send</button></form></sc-if>
+</div>
+<div style="min-height:340px;background:#26304a url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=70') center/cover"></div>
+</div>
+<sc-if value="{{ isContact }}">
+<div style="margin-top:72px"><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.4vw,42px);margin:0 0 30px">Global offices</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 24px">
+<sc-for list="{{ offices }}" as="o" hint-placeholder-count="8">
+<div style="border-top:2px solid #1A2234;padding-top:16px"><div style="font-weight:700;font-size:18px;margin-bottom:10px">{{ o.city }}</div><div style="font-size:15px;line-height:1.7;color:#4A5468">{{ o.phone }}<br>contact@dallandpartners.com<br>{{ o.addr }}</div></div></sc-for></div></div>
+</sc-if>
+</section></sc-if>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background:#111726;color:#C9CFDD">
+<div style="max-width:1280px;margin:0 auto;padding:64px 32px 28px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
+<div><a href="#/" style="display:flex;align-items:center;gap:12px;color:#fff"><span style="width:44px;height:44px;border:2px dashed #6B7590;display:grid;place-items:center;font-size:10px;font-weight:700;color:#9AA3B8;letter-spacing:.08em">LOGO</span><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;line-height:1">DALL<br><span style="font-size:11px;font-weight:500;letter-spacing:.16em;color:#FF8A80">AND PARTNERS</span></span></a>
+<p style="font-size:14px;line-height:1.7;margin:20px 0 0;color:#9AA3B8">Boutique citizenship and residency by investment consulting.</p></div>
+<div><div style="color:#fff;font-weight:700;margin-bottom:14px">Company</div><div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<a href="#/about" style="color:#C9CFDD" style-hover="color:#fff">About us</a><a href="#/team" style="color:#C9CFDD" style-hover="color:#fff">Our team</a><a href="#/join" style="color:#C9CFDD" style-hover="color:#fff">Join our team</a><a href="#/contact" style="color:#C9CFDD" style-hover="color:#fff">Contact us</a></div></div>
+<div><div style="color:#fff;font-weight:700;margin-bottom:14px">Programmes</div><div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<a href="#/citizenship" style="color:#C9CFDD" style-hover="color:#fff">Citizenship</a><a href="#/residency" style="color:#C9CFDD" style-hover="color:#fff">Residency</a><a href="#/real-estate" style="color:#C9CFDD" style-hover="color:#fff">Real estate</a></div></div>
+
+</div>
+<div style="border-top:1px solid #26304a;margin-top:44px;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px">
+<sc-for list="{{ footOffices }}" as="o" hint-placeholder-count="6"><div><div style="color:#fff;font-weight:700;margin-bottom:8px">{{ o.city }}</div><div style="font-size:13.5px;line-height:1.7;color:#9AA3B8">{{ o.addr }}<br>{{ o.phone }}</div></div></sc-for></div>
+<div style="border-top:1px solid #26304a;margin-top:32px;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;font-size:13px">
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#/legal/privacy" style="color:#9AA3B8">Privacy Policy</a><a href="#/legal/disclaimer" style="color:#9AA3B8">Disclaimer</a><a href="#/legal/terms" style="color:#9AA3B8">Terms of Use</a><a href="#/legal/cookies" style="color:#9AA3B8">Cookie Policy</a></div>
+<div style="display:flex;gap:10px"><a href="https://facebook.com" style="width:34px;height:34px;border:1px solid #3A4666;display:grid;place-items:center;color:#C9CFDD;font-weight:700">f</a><a href="https://instagram.com" style="width:34px;height:34px;border:1px solid #3A4666;display:grid;place-items:center;color:#C9CFDD;font-weight:700">ig</a><a href="https://youtube.com" style="width:34px;height:34px;border:1px solid #3A4666;display:grid;place-items:center;color:#C9CFDD;font-weight:700">▶</a></div>
+<div style="color:#9AA3B8">© 2026 Dall and Partners, a part of AimPerfect Services Com Auto LDA, registered in Portugal</div></div>
+</div></footer>
+
+<!-- modal -->
+<sc-if value="{{ modal }}">
+<div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(17,23,38,.7);z-index:100;display:grid;place-items:center;padding:20px">
+<div onClick="{{ stop }}" style="background:#fff;width:100%;max-width:440px;padding:34px;position:relative">
+<button onClick="{{ closeModal }}" style="position:absolute;top:10px;right:14px;background:none;border:0;font-size:26px;cursor:pointer;color:#1A2234">×</button>
+<h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:26px;margin:0 0 6px">Request a call back</h3>
+<p style="color:#4A5468;margin:0 0 20px;font-size:15px">Leave your number and we will call you within one working day.</p>
+<sc-if value="{{ cbSent }}"><div style="background:#E8F5E9;color:#1B5E20;padding:16px;font-weight:600">Thank you. We will call you soon.</div></sc-if>
+<sc-if value="{{ cbOpen }}"><form onSubmit="{{ submitCb }}" style="display:flex;flex-direction:column;gap:12px"><input required placeholder="Full name*" style="padding:14px;border:1px solid #C6CCDA;font-size:15px"><input required type="tel" placeholder="Phone number*" style="padding:14px;border:1px solid #C6CCDA;font-size:15px"><button type="submit" style="background:#D32F2F;color:#fff;border:0;padding:15px;font-weight:700;cursor:pointer;font-size:15px">Call me back</button></form></sc-if>
+</div></div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { route: '', menu: '', mobileOpen: false, w: 1200, tab: 'all', modal: false, cbSent: false, sent: false, faq: 0, job: 'General application', jobSent: false, reC: '' };
+
+  componentDidMount() {
+    this.onHash = () => { this.setState({ route: (location.hash || '').replace(/^#\/?/, ''), mobileOpen: false, menu: '', sent: false, faq: 0, reC: '' }); window.scrollTo(0, 0); };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('resize', this.onResize);
+    this.setState({ route: (location.hash || '').replace(/^#\/?/, ''), w: window.innerWidth });
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); }
+
+  data() {
+    const U = (id, w) => 'https://images.unsplash.com/' + id + '?w=' + (w || 1200) + '&q=70';
+    const I = {
+      city: 'photo-1486406146926-c627a92ad1ab', tr: 'photo-1524231757912-21f4fe3a7200', tr2: 'photo-1527838832700-5059252407fa', gr: 'photo-1503152394-c571994fd383', mt: 'photo-1514890547357-a9ee288728e0',
+      lv: 'photo-1541849546-216549ae216d', ba: 'photo-1519681393784-d120267933ba', hu: 'photo-1541343672885-9be56236302a', dm: 'photo-1580541631950-7282082b53ce', gd: 'photo-1507525428034-b723cf961d3e',
+      h1: 'photo-1560518883-ce09059eeffa', h2: 'photo-1600585154340-be6161a56a0c', h3: 'photo-1512917774080-9991f1c4c750', h4: 'photo-1564013799919-ab600027ffc6', h5: 'photo-1600596542815-ffad4c1539a9', h6: 'photo-1613490493576-7fde63acd811',
+      n1: 'photo-1454165804606-c3d57bc86b40', n2: 'photo-1450101499163-c8848c66ca85', n3: 'photo-1521295121783-8a321d551ad2', n4: 'photo-1589829545856-d10d557cf95f', n5: 'photo-1507679799987-c73779587ccf'
+    };
+    const mk = (id, type, name, code, color, invest, inv, time, visa, best, status, img, img2, img3, blurb) => ({ id, type, name, code, color, invest, inv, time, visa, best, status, img: U(I[img], 1600), img2: U(I[img2], 900), img3: U(I[img3], 1200), blurb });
+    const C = [
+      mk('turkiye', 'citizenship', 'Türkiye', 'TR', '#D32F2F', '$400,000', 400, 'Instant–6 mo', '110+ countries', 'Investors, families', 'Citizenship', 'tr', 'tr2', 'tr', 'Türkiye offers a fast route to a passport with a strategic position between Europe and Asia.'),
+      mk('malta', 'citizenship', 'Malta', 'MT', '#C8102E', '€600,000', 600, '12–36 mo', '186 countries', 'Families, entrepreneurs', 'Citizenship', 'mt', 'mt', 'mt', 'Malta grants EU citizenship through naturalisation for exceptional services by direct investment.'),
+      mk('dominica', 'citizenship', 'Dominica', 'DM', '#006B3F', '$200,000', 200, '3–4 mo', '140+ countries', 'Investors, digital nomads', 'Citizenship', 'dm', 'dm', 'dm', 'Dominica offers one of the most affordable Caribbean citizenships with a straightforward process.'),
+      mk('grenada', 'citizenship', 'Grenada', 'GD', '#CE1126', '$235,000', 235, '4–6 mo', '140+ countries', 'Entrepreneurs, families', 'Citizenship', 'gd', 'gd', 'gd', 'Grenada is the only Caribbean programme with E-2 visa treaty access to the United States.'),
+      mk('latvia', 'residency', 'Latvia', 'LV', '#9E1B32', '€50,000', 50, '3+ months', 'EU Schengen', 'Families, entrepreneurs', 'Residence permit', 'lv', 'lv', 'lv', 'Latvia offers EU residency from a modest investment with a clear path to Schengen mobility.'),
+      mk('greece', 'residency', 'Greece', 'GR', '#0D5EAF', '€250,000', 250, '4+ months', 'EU Schengen', 'Investors, families', 'Residence permit', 'gr', 'gr', 'gr', 'The Greek Golden Visa gives residence rights across the Schengen area through real estate.'),
+      mk('malta-residency', 'residency', 'Malta', 'MT', '#C8102E', '€169,000', 169, '6+ months', 'EU Schengen', 'Investors, families', 'Permanent residency', 'mt', 'mt', 'mt', 'Malta Permanent Residency is a cost-effective route to living in an English-speaking EU member state.'),
+      mk('bosnia', 'residency', 'Bosnia & Herzegovina', 'BA', '#002F6C', 'No minimum', 0, '3+ months', 'Balkans, Türkiye', 'Entrepreneurs', 'Residence permit', 'ba', 'ba', 'ba', 'Bosnia offers a low-cost residence permit through company formation with no minimum capital.'),
+      mk('hungary', 'residency', 'Hungary', 'HU', '#436F4D', '€250,000', 250, '2+ months', 'EU Schengen', 'Investors, families', 'Residence permit', 'hu', 'hu', 'hu', 'Hungary provides Schengen residence through investment fund units with strong liquidity options.')
+    ];
+    C.forEach(c => {
+      const L = c.type === 'citizenship';
+      const f = c.inv;
+      const sym = c.invest.startsWith('€') ? '€' : '$';
+      const m = n => f ? sym + Math.round(f * n).toLocaleString('en-US') : 'No minimum';
+      c.title = L ? 'Citizenship by investment in ' + c.name : c.name + ' residency by investment';
+      c.lead = c.blurb + ' Our advisors guide you through eligibility, due diligence, investment and approval.';
+      c.perks = L ? ['Visa-free travel access', 'Family members included', 'Dual citizenship allowed', 'Fast, transparent process'] : ['Live, work and study', 'Family reunification', 'Path to long-term status', 'Schengen mobility'];
+      c.processTitle = 'How to obtain ' + (L ? 'citizenship' : 'residency') + ' in ' + c.name;
+      c.process = [
+        ['Initial consultation and eligibility check', 'We review your profile, goals and family situation to confirm you qualify and pick the right route.'],
+        ['Choose your investment', 'Select from approved options such as real estate, government funds, deposits or a business.'],
+        ['Due diligence and document preparation', 'Our lawyers prepare and verify every document, including background and source-of-funds checks.'],
+        ['Submit and track your application', 'We file with the authorities and keep you informed at every stage until a decision.'],
+        ['Receive your ' + (L ? 'passport' : 'residence card'), 'Approval is confirmed, funds are settled and your documents are delivered.']
+      ].map((s, i) => ({ n: i + 1, title: s[0], text: s[1] }));
+      c.paths = [
+        { title: 'Real estate investment', amt: m(1), pts: ['Hold period of 3–5 years', 'Government fees and legal costs apply', 'Property may be rented or resold', 'Family members can be added'] },
+        { title: 'Government fund contribution', amt: m(1.1), pts: ['Non-refundable contribution', 'Fastest processing time', 'No property management', 'Due diligence fee separate'] },
+        { title: 'Bank deposit or bonds', amt: m(1.5), pts: ['Refundable after holding period', 'Managed by a licensed institution', 'Interest terms vary', 'Source-of-funds proof required'] },
+        { title: 'Business or job creation', amt: m(0.5), pts: ['Minimum number of local jobs', 'Business plan review', 'Suited to entrepreneurs', 'Ongoing compliance required'] }
+      ];
+      c.why = ['Strong global mobility', 'Clear and predictable process', 'Family-friendly programme', 'Reputable legal framework', 'Investment can retain value'];
+      c.typeLabel = L ? 'Citizenship' : 'Residency';
+      c.typeLower = L ? 'citizenship' : 'residency';
+      c.hubHref = '#/' + c.type;
+    });
+    return C;
+  }
+
+  renderVals() {
+    const s = this.state, C = this.data(), r = s.route, parts = r.split('/');
+    const U = (id, w) => 'https://images.unsplash.com/' + id + '?w=' + (w || 1200) + '&q=70';
+    const wide = s.w >= 1024, narrow = !wide;
+    const page = parts[0] || 'home';
+    const isHome = page === 'home', isAbout = page === 'about', isTeam = page === 'team', isJoin = page === 'join', isRE = page === 'real-estate', isContact = page === 'contact', isLegal = page === 'legal';
+    const isHub = (page === 'citizenship' || page === 'residency') && !parts[1];
+    const ct0 = (page === 'citizenship' || page === 'residency') && parts[1] ? C.find(c => c.id === parts[1] && c.type === page) : null;
+    const isCountry = !!ct0;
+    const ct = ct0 || C[0];
+    const cardOf = c => ({ href: '#/' + c.type + '/' + c.id, img: c.img, type: c.type === 'citizenship' ? 'Citizenship' : 'Residency', code: c.code, color: c.color, name: c.name, invest: c.invest, time: c.time, visa: c.visa, best: c.best });
+    let cardList = C;
+    if (isHub) cardList = C.filter(c => c.type === page);
+    else if (s.tab !== 'all') cardList = C.filter(c => c.type === s.tab);
+    const newsAll = [
+      ['How residency by investment works', 'Guide', 'n1', '#/residency'], ['Türkiye 2026 tax package: what the law says', 'Citizenship', 'n2', '#/citizenship/turkiye'],
+      ['7 best European golden visa options', 'Residency', 'n3', '#/residency'], ['Second passports and citizenship by investment', 'Citizenship', 'n4', '#/citizenship'], ["Latvia's golden visa 2026: is it worth considering?", 'Residency', 'n5', '#/residency/latvia']
+    ].map(a => ({ title: a[0], tag: a[1], img: U('photo-' + { n1: '1454165804606-c3d57bc86b40', n2: '1450101499163-c8848c66ca85', n3: '1521295121783-8a321d551ad2', n4: '1589829545856-d10d557cf95f', n5: '1507679799987-c73779587ccf' }[a[2]], 900), href: a[3] }));
+    const nav = [
+      { label: 'Home', href: '#/', key: 'home' },
+      { label: 'Our Company', href: '#/about', key: 'about', kids: [['About us', '#/about'], ['Our team', '#/team'], ['Join our team', '#/join']] },
+      { label: 'Citizenship', href: '#/citizenship', key: 'citizenship', kids: C.filter(c => c.type === 'citizenship').map(c => [c.name, '#/citizenship/' + c.id]) },
+      { label: 'Residency', href: '#/residency', key: 'residency', kids: C.filter(c => c.type === 'residency').map(c => [c.name, '#/residency/' + c.id]) },
+      { label: 'Real Estate', href: '#/real-estate', key: 'real-estate' },
+      { label: 'Contact us', href: '#/contact', key: 'contact' }
+    ];
+    const activeKey = ['team', 'join'].includes(page) ? 'about' : page;
+    const navOut = nav.map(n => ({ label: n.label, href: n.href, hasKids: !!n.kids, showKids: s.menu === n.key && !!n.kids, kids: (n.kids || []).map(k => ({ label: k[0], href: k[1] })), color: activeKey === n.key ? '#D32F2F' : '#1A2234', border: activeKey === n.key ? '#D32F2F' : 'transparent', open: () => this.setState({ menu: n.key }) }));
+    const mobileNav = [];
+    nav.forEach(n => { mobileNav.push({ label: n.label, href: n.href, indent: '0', size: '17px', weight: 700 }); (n.kids || []).forEach(k => mobileNav.push({ label: k[0], href: k[1], indent: '16px', size: '15px', weight: 500 })); });
+    const offices = [['Lahore', '+92 339 122 1220', '8 Fane Rd, Lahore 54000, Pakistan'], ['Athens', '+30 699 804 8899', 'Athens, Greece'], ['Istanbul', '+90 536 406 3392', 'Üçevler Mah., 911. Sk., No: 4BH, Esenyurt/İstanbul, Türkiye'], ['Oslo', '+47 957 09 984', 'Oslo, Norway'], ['Lisboa (Head office)', '+351 910 201 329', 'R. Braamcamp 52, 1250-048 Lisboa, Portugal'], ['Sarajevo (Balkan office)', '+387 60 340 367', 'Maglajska 1, 71000 Sarajevo, Bosnia'], ['Islamabad', '+92 339 122 1220', 'State Life Building 7, F6, Islamabad, Pakistan'], ['Riga', '+371 27 199 169', 'Dzirnavu iela 57, LV-1010, Riga, Latvia']].map(o => ({ city: o[0], phone: o[1], addr: o[2] }));
+    const footOffices = [offices[4], offices[5], offices[6], offices[0], offices[7], offices[2]];
+    const faqBase = ['What is citizenship by investment?', 'What is residency by investment?', 'How long does the process take?', 'Can my family be included?', 'What investment options are available?'];
+    const faqA = ['A legal route to obtain a second passport by making a qualifying contribution to the host country, subject to due diligence.', 'A residence permit granted in return for a qualifying investment, allowing you to live in the country and often travel visa-free in its region.', 'From two months to over a year depending on the programme. We give a realistic timeline for each country before you commit.', 'Yes. Spouses, dependent children and in many cases parents can be included in the same application.', 'Real estate, government funds, bank deposits and business creation, depending on the programme.'];
+    const faqs = faqBase.map((q, i) => ({ q, a: faqA[i], open: s.faq === i, sign: s.faq === i ? '−' : '+', toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) }));
+    const props = [['Low-rise building with terrace', 'Riga, Latvia', 'latvia', '€85,000', '3 beds | 2 baths', 'h1'], ['Multifamily residential', 'Riga, Latvia', 'latvia', '€250,000', '3 beds | 2 baths', 'h2'], ['Seafront apartment', 'Sliema, Malta', 'malta', '€369,000', '2 beds | 2 baths', 'h3'], ['Old-town townhouse', 'Valletta, Malta', 'malta', '€520,000', '4 beds | 3 baths', 'h4'], ['Aegean villa', 'Athens Riviera, Greece', 'greece', '€480,000', '4 beds | 3 baths', 'h5'], ['Renovated city flat', 'Thessaloniki, Greece', 'greece', '€250,000', '2 beds | 1 bath', 'h6'], ['Hillside family house', 'Sarajevo, Bosnia', 'bosnia', '€120,000', '3 beds | 2 baths', 'h2'], ['Modern studio', 'Mostar, Bosnia', 'bosnia', '€64,000', '1 bed | 1 bath', 'h1']];
+    const hid = { h1: '1560518883-ce09059eeffa', h2: '1600585154340-be6161a56a0c', h3: '1512917774080-9991f1c4c750', h4: '1564013799919-ab600027ffc6', h5: '1600596542815-ffad4c1539a9', h6: '1613490493576-7fde63acd811' };
+    const propList = props.filter(p => !s.reC || p[2] === s.reC).map(p => ({ title: p[0], loc: p[1], price: p[3], spec: p[4], img: U('photo-' + hid[p[5]], 900) }));
+    const reCards = [['malta', 'Permanent residency', '6+ months', 'From €169,000'], ['greece', 'Residence permit', '4+ months', 'From €250,000'], ['bosnia', 'Residence permit', '3+ months', 'From no minimum limit'], ['latvia', 'Residence permit', '3+ months', 'From €50,000']].map(a => {
+      const c = C.find(x => x.id === a[0]) || C.find(x => x.id === 'malta-residency'), on = s.reC === a[0];
+      return { name: c.name, code: c.code, color: c.color, status: a[1], time: a[2], from: a[3], border: on ? '#D32F2F' : '#E1E4EC', top: on ? '#D32F2F' : '#1A2234', bg: on ? '#1A2234' : '#fff', fg: on ? '#fff' : '#1A2234', btn: on ? 'Showing properties' : 'View properties', pick: () => { this.setState({ reC: a[0] }); } };
+    });
+    const legalTitles = { privacy: 'Privacy Policy', disclaimer: 'Disclaimer', terms: 'Terms of Use', cookies: 'Cookie Policy' };
+    const showForm = !isJoin && !isLegal;
+    const formCfg = isContact ? ['General inquiries', 'Use our contact form and we will contact you as soon as we can.'] : isRE ? ['Speak to us today', 'Learn which property has the best construction quality and sits in an attractive area for living or renting.'] : isCountry ? ['Get in touch', 'Connect with our advisory team to explore ' + ct.name + ' ' + ct.typeLower + ' options.'] : ['Not sure which programme suits you best?', 'Connect with our advisory team to explore tailored residency and citizenship options.'];
+    const jobs = [['Immigration Consultant', 'Lisboa · Full-time'], ['Client Relations Manager', 'Istanbul · Full-time'], ['Legal Advisor, Investment Migration', 'Riga · Full-time'], ['Real Estate Specialist', 'Athens · Hybrid'], ['General application', 'Any office']].map(j => { const on = s.job === j[0]; return { title: j[0], meta: j[1], btn: on ? 'Selected' : 'Apply', bg: on ? '#1A2234' : 'transparent', fg: on ? '#fff' : '#1A2234', pick: () => this.setState({ job: j[0], jobSent: false }) }; });
+    const pn = ['Amara Costa', 'Head of Advisory', 'Marek Ozols', 'Senior Legal Counsel', 'Selin Aydın', 'Client Director, Türkiye', 'Nikos Pappas', 'Real Estate Lead, Greece', 'Ilma Hodžić', 'Balkan Office Manager', 'Jonas Berg', 'Nordic Partnerships', 'Sana Malik', 'Operations Lead, Pakistan', 'Laura Ziedina', 'Compliance Officer'];
+    const tphotos = ['1573496359142-b8d87734a5a2', '1507003211169-0a1dd7228f2d', '1580489944761-15a19d654956', '1560250097-0b93528c311a', '1573497019940-1c28c88b4f3e', '1519085360753-af0119f7cbe7', '1438761681033-6461ffad8d80', '1568602471122-7832951cc4c5'];
+    const bios = ['Leads client strategy across all programmes.', 'Oversees legal structuring and filings.', 'Manages Turkish citizenship cases.', 'Advises on Greek property investments.', 'Runs day-to-day operations in Sarajevo.', 'Builds partner relationships in the Nordics.', 'Coordinates cases from our Pakistan offices.', 'Ensures KYC and due diligence standards.'];
+    const team = tphotos.map((p, i) => ({ name: pn[i * 2], role: pn[i * 2 + 1], bio: bios[i], img: U('photo-' + p, 700) }));
+    const compareRows = ct.type ? C.filter(c => c.type === ct.type).map(c => ({ name: c.name, invest: c.invest, time: c.time, visa: c.visa, bg: c.id === ct.id ? '#FDECEC' : '#fff', href: '#/' + c.type + '/' + c.id })) : [];
+    const ctOut = Object.assign({}, ct, { compare: compareRows });
+    const tabs = [['all', 'All'], ['citizenship', 'Citizenship'], ['residency', 'Residency']].map(t => ({ label: t[1], bg: s.tab === t[0] ? '#1A2234' : 'transparent', fg: s.tab === t[0] ? '#fff' : '#1A2234', pick: () => this.setState({ tab: t[0] }) }));
+    const submitTo = key => e => { e.preventDefault(); this.setState({ [key]: true }); };
+    return {
+      wide, narrow, nav: navOut, mobileNav, mobileOpen: s.mobileOpen && narrow, mobileIcon: s.mobileOpen ? '×' : '☰',
+      closeMenu: () => this.setState({ menu: '' }), toggleMobile: () => this.setState({ mobileOpen: !s.mobileOpen }),
+      openModal: () => this.setState({ modal: true, cbSent: false }), closeModal: () => this.setState({ modal: false }), stop: e => e.stopPropagation(),
+      modal: s.modal, cbSent: s.cbSent, cbOpen: !s.cbSent, submitCb: submitTo('cbSent'),
+      isHome, isAbout, isTeam, isJoin, isRE, isContact, isLegal, isHub, isCountry, legalTitle: legalTitles[parts[1]] || 'Legal',
+      showPrograms: isHome || isHub, progPad: isHome ? '80px' : '64px',
+      hubKicker: page === 'citizenship' ? 'Citizenship' : 'Residency', hubTitle: page === 'citizenship' ? 'Citizenship by investment' : 'Residency by investment',
+      hubText: page === 'citizenship' ? 'A second passport opens borders, markets and options for your family. Compare programmes and choose with confidence.' : 'Live, work and invest in your chosen country. Compare residence programmes across Europe and the Balkans.',
+      audiences: ['Investors', 'Families', 'Digital nomads', 'Entrepreneurs', 'Passive-income individuals'],
+      steps: [['Initial consultation', 'A free call to assess your profile and identify relevant programmes.'], ['Preliminary due diligence', 'We check eligibility and confirm compliance requirements.'], ['Make the investment', 'Fund a qualifying investment such as real estate or a government fund.'], ['Submit your application', 'We prepare, file and track all documentation with the authorities.'], ['Obtain residency or citizenship', 'Receive approval and long-term mobility for you and your family.']].map((x, i) => ({ n: i + 1, title: x[0], text: x[1] })),
+      tabs, cards: cardList.map(cardOf),
+      services: [['Business formation', 'Company formation including opening business accounts.', 'Portugal, Qatar, UAE, Oman', '#/contact'], ['Real estate', 'Assistance with purchase of real estate and property management.', 'Greece, Latvia, Malta, Bosnia', '#/real-estate'], ['Corporate solutions', 'Tailored solutions for institutions seeking to expand their international footprint.', 'Türkiye', '#/contact'], ['Business immigration', 'Work and business immigration for founders and their teams.', 'Canada, Portugal', '#/contact']].map(x => ({ title: x[0], text: x[1], where: x[2], href: x[3] })),
+      news: newsAll, newsShort: newsAll.slice(0, 3),
+      values: [['Always updated', 'We stay informed on policy developments, government updates and changing investment thresholds so decisions rest on current data.'], ['Compliance', 'We work with licensed lawyers and regulated partners. Strict KYC routines and due diligence keep every step correct and professional.'], ['Transparency', 'Clear costs, timelines and requirements. You always know what you are entering into and what you are paying for.']].map(v => ({ title: v[0], text: v[1] })),
+      offices, footOffices, team, jobs, jobPicked: s.job, jobSent: s.jobSent, jobForm: !s.jobSent, submitJob: submitTo('jobSent'),
+      ct: ctOut, reCards, properties: propList, noProps: propList.length === 0, clearRE: () => this.setState({ reC: '' }), reFilterLabel: s.reC ? 'Show all countries ×' : '',
+      faqs, showFaq: isHome || isAbout || isCountry, showForm, formPad: isContact ? '72px' : '80px', formTitle: formCfg[0], formText: formCfg[1],
+      sent: s.sent, formOpen: !s.sent, submitForm: submitTo('sent'), resetForm: () => this.setState({ sent: false }),
+      programOptions: C.map(c => c.name + ' ' + (c.type === 'citizenship' ? 'citizenship' : 'residency')).concat(['Real estate', 'Business formation'])
+    };
+  }
+}
+</script>
+</body>
+</html>
